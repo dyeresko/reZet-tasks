@@ -1,19 +1,31 @@
 function splitArray(array)
 {
-    let words = array.reduce((word, element) => 
+    word = "";
+    results = [];
+    for (let i = 0; i < array.length; i++)
     {
-        let len = word.length;
-        if (len === 0 || (word[len - 1] + element).length > 15)
+        
+        if (((word + array[i]).length > 15) || i == array.length - 1)
         {
-            word[len] = element;
+            results.push(word);
+            word = array[i];
         }
-        else 
+        else
         {
-            word[len - 1] += " " + element;
+            if (word == "")
+            {
+                word += array[i];
+            }
+            else
+            {
+                word += " " + array[i];
+            }
         }
-        return word;
-    }, []);
-    return words;
+    
+        
+    }
+    return results;
+    
 }
 
 
