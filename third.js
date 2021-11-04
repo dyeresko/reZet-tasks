@@ -1,3 +1,22 @@
+function splitArray(array)
+{
+    let words = array.reduce((word, element) => 
+    {
+        let len = word.length;
+        if (len === 0 || (word[len - 1] + element).length > 15)
+        {
+            word[len] = element;
+        }
+        else 
+        {
+            word[len - 1] += " " + element;
+        }
+        return word;
+    }, []);
+    return words;
+}
+
+
 function format(arr, conditions)
 {
     result = ["******************"]
@@ -12,19 +31,7 @@ function format(arr, conditions)
             }
             else
             {
-                let words = arr[i].reduce((word, element) => 
-                {
-                    let len = word.length;
-                    if (len === 0 || (word[len - 1] + element).length > 15)
-                    {
-                      word[len] = element;
-                    }
-                    else 
-                    {
-                      word[len - 1] += " " + element;
-                    }
-                    return word;
-                }, []);
+                words = splitArray(arr[i]);
                 
                 for (let j = 0; j < words.length; j++)
                 {
@@ -40,19 +47,7 @@ function format(arr, conditions)
             }
             else
             {
-                let words = arr[i].reduce((word, element) => 
-                {
-                    let len = word.length;
-                    if (len === 0 || (word[len - 1] + element).length > 15)
-                    {
-                      word[len] = element;
-                    }
-                    else 
-                    {
-                      word[len - 1] += " " + element;
-                    }
-                    return word;
-                }, []);
+                words = splitArray(arr[i]);
                 
                 for (let j = 0; j < words.length; j++)
                 {
